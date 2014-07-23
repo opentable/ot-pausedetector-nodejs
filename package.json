@@ -1,0 +1,23 @@
+{
+  "name": "ot-pausedetector",
+  "version": "0.0.1",
+  "description": "Node VM Pause Detector",
+  "main": "src/pause.js",
+  "scripts": {
+    "test": "node_modules/mocha/bin/mocha test --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/opentable/ot-pausedetector-nodejs.git"
+  },
+  "publishConfig": {
+    "registry": "http://artifactory.otenv.com:8081/artifactory/api/npm/npm-local"
+  },
+  "author": "Steven Schlansker",
+  "dependencies": {
+    "ot-logger": "~0.0.8"
+  },
+  "devDependencies": {
+    "mocha": "~1.20.0"
+  }
+}
