@@ -8,7 +8,8 @@ This can cause huge issues, and shows up when you least expect it.
 
 ot-pausedetector will not solve your pauses, but at least it makes you aware of them!
 
-Usage:
+Basic Usage
+-----------
 
     require("ot-pausedetector")
 
