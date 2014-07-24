@@ -30,7 +30,7 @@ PauseDetector.resume = function() {
   timer = setInterval(runCheck, checkMs);
   timer.unref();
   lastPause = Date.now();
-  logger.info("Detecting Node VM pauses");
+  logger.info("Detecting Node VM pauses.  Checking every " + checkMs + "ms for pauses of at least " + maxPauseMs + "ms");
 }
 
 // Stop detection
