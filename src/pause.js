@@ -1,5 +1,5 @@
 var logger = require('ot-logger');
-var lastPause = Date.now();
+var lastPause; 
 var callbacks = [];
 
 PauseDetector = {}
@@ -24,6 +24,7 @@ var timer;
 PauseDetector.start = function() {
   timer = setInterval(runCheck, 25);
   timer.unref();
+  lastPause = Date.now();
   logger.info("Detecting Node VM pauses");
 }
 
