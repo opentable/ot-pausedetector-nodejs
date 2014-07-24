@@ -11,7 +11,8 @@ ot-pausedetector will not solve your pauses, but at least it makes you aware of 
 Basic Usage
 -----------
 
-    require("ot-pausedetector")
+    var pause = require("ot-pausedetector");
+    pause.init();
 
 Yup!  That's it.  The module registers itself with the runtime on first inclusion, and by default will log
 an ERROR level message when a pause of 50ms or greater happens.
@@ -19,11 +20,19 @@ an ERROR level message when a pause of 50ms or greater happens.
 Advanced Usage
 --------------
 
+    pause.init({
+      checkMs: 25,
+      maxPauseMs: 50,
+      logger: require("ot-logger")
+    });
+
+Init takes an optional dictionary of options.
+
     pause.stop();
 
 Temporarily suspend pause detection.
 
-    pause.start();
+    pause.resume();
 
 Resume pause detection.
 

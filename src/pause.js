@@ -1,5 +1,10 @@
-var logger = require('ot-logger');
-var lastPause; 
+(function() {
+
+var logger;
+var checkMs = 25;
+var maxPauseMs = 50;
+
+var lastPause;
 var callbacks = [];
 
 PauseDetector = {}
@@ -11,7 +16,7 @@ function runCheck () {
   var timeSinceLastCheck = now - lastPause;
   lastPause = now;
 
-  if (timeSinceLastCheck > 50) {
+  if (timeSinceLastCheck > maxPauseMs) {
     callbacks.forEach(function (callback) {
       callback(timeSinceLastCheck);
     });
@@ -21,8 +26,8 @@ function runCheck () {
 var timer;
 
 // Start detection
-PauseDetector.start = function() {
-  timer = setInterval(runCheck, 25);
+PauseDetector.resume = function() {
+  timer = setInterval(runCheck, checkMs);
   timer.unref();
   lastPause = Date.now();
   logger.info("Detecting Node VM pauses");
@@ -39,12 +44,31 @@ PauseDetector.onPause = function(callback) {
   callbacks.push(callback);
 }
 
-module.exports = PauseDetector;
-
 // By default, log an error on pause
 PauseDetector.onPause(function(ms) {
   logger.error("The Node runtime paused for %s ms! (+/- 25)", ms);
 });
 
-// Start running on module include!
-PauseDetector.start();
+// Configure and start
+PauseDetector.init = function(options) {
+  if (!options) options = {};
+
+  if (options.logger) {
+    logger = options.logger;
+  } else {
+    logger = require('ot-logger');
+  }
+
+  if (options.checkMs) {
+    checkMs = options.checkMs;
+  }
+  if (options.maxPauseMs) {
+    maxPauseMs = options.maxPauseMs;
+  }
+
+  PauseDetector.resume();
+}
+
+module.exports = PauseDetector;
+
+})();
