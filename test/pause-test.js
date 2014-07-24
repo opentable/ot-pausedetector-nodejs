@@ -1,13 +1,20 @@
 assert = require('assert');
-logger = require('ot-logger');
 
-logger.init({
-  applicationName: "test",
-  applicationVersion: "0"
-});
+var log = function(msg) {
+  console.log(msg);
+};
+
+logger = {
+  debug: log,
+  info: log,
+  warn: log,
+  error: log
+};
 
 var pause = require('../src/pause');
-pause.init();
+pause.init({
+  logger: logger
+});
 
 describe('PauseDetector', function() {
   it('should detect pauses', function(done) {

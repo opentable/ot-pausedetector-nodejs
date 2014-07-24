@@ -46,7 +46,7 @@ PauseDetector.onPause = function(callback) {
 
 // By default, log an error on pause
 PauseDetector.onPause(function(ms) {
-  logger.error("The Node runtime paused for %s ms! (+/- 25)", ms);
+  logger.error("The Node runtime paused for " + ms + "ms! (+/- 25)");
 });
 
 // Configure and start
