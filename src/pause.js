@@ -31,18 +31,18 @@ PauseDetector.resume = function() {
   timer.unref();
   lastPause = Date.now();
   logger.info("Detecting Node VM pauses.  Checking every " + checkMs + "ms for pauses of at least " + maxPauseMs + "ms");
-}
+};
 
 // Stop detection
 PauseDetector.stop = function() {
   logger.info("Stop detecting Node VM pauses");
   clearInterval(timer);
-}
+};
 
 // Register additional callbacks
 PauseDetector.onPause = function(callback) {
   callbacks.push(callback);
-}
+};
 
 // By default, log an error on pause
 PauseDetector.onPause(function(ms) {
@@ -67,7 +67,7 @@ PauseDetector.init = function(options) {
   }
 
   PauseDetector.resume();
-}
+};
 
 module.exports = PauseDetector;
 
