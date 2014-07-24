@@ -7,7 +7,7 @@ var maxPauseMs = 50;
 var lastPause;
 var callbacks = [];
 
-PauseDetector = {}
+var PauseDetector = {};
 
 // Tick repeatedly.  If a VM pause happens, ticks
 // will come dramatically late, and then we sound the alarm!
