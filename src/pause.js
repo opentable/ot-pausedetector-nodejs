@@ -2,7 +2,7 @@
 
 var logger;
 var checkMs = 25;
-var maxPauseMs = 50;
+var maxPauseMs = 100;
 
 var lastPause;
 var callbacks = [];
