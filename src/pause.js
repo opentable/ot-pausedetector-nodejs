@@ -1,7 +1,7 @@
 (function() {
 
 var logger;
-var checkMs = 25;
+var checkMs = 10;
 var maxPauseMs = 50;
 
 var lastPause;
