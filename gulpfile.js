@@ -14,4 +14,4 @@ var coverageThresholds = {
     lines: 86
   };
 
-require('../ot-gulp-release-tasks/index')(gulp, scripts, tests, mochaOpts, coverageThresholds);
+require('ot-gulp-release-tasks')(gulp, scripts, tests, mochaOpts, coverageThresholds);

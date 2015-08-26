@@ -20,6 +20,6 @@
   "devDependencies": {
     "gulp": "^3.9.0",
     "mocha": "~1.20.0",
-    "ot-gulp-release-tasks": "0.0.2"
+    "ot-gulp-release-tasks": "^0.0.x"
   }
 }
