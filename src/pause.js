@@ -1,5 +1,5 @@
 (function() {
-
+'use strict';
 var logger;
 var checkMs = 10;
 var maxPauseMs = 50;
@@ -51,7 +51,7 @@ PauseDetector.onPause(function(ms) {
 
 // Configure and start
 PauseDetector.init = function(options) {
-  if (!options) options = {};
+  if (!options) {options = {};}
 
   if (options.logger) {
     logger = options.logger;
