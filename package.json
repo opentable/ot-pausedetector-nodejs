@@ -14,8 +14,8 @@
     "registry": "http://artifactory.otenv.com:8081/artifactory/api/npm/npm-local"
   },
   "author": "Steven Schlansker",
-  "optionalDependencies": {
-    "ot-logger": "~0.2.0"
+  "dependencies": {
+    "ot-logger": "^0.6.2"
   },
   "devDependencies": {
     "gulp": "^3.9.0",
