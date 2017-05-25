@@ -15,7 +15,6 @@
   },
   "author": "Steven Schlansker",
   "dependencies": {
-    "ot-logger": "^0.6.2"
   },
   "devDependencies": {
     "gulp": "^3.9.0",
