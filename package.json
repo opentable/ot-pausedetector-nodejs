@@ -1,6 +1,6 @@
 {
   "name": "ot-pausedetector",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "Node VM Pause Detector",
   "main": "src/pause.js",
   "scripts": {
@@ -14,8 +14,7 @@
     "registry": "http://artifactory.otenv.com:8081/artifactory/api/npm/npm-local"
   },
   "author": "Steven Schlansker",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "gulp": "^3.9.0",
     "mocha": "~1.20.0",
