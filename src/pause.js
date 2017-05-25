@@ -30,12 +30,12 @@ PauseDetector.resume = function() {
   timer = setInterval(runCheck, checkMs);
   timer.unref();
   lastPause = Date.now();
-  logger.info("Detecting Node VM pauses.  Checking every " + checkMs + "ms for pauses of at least " + maxPauseMs + "ms");
+  logger.info({message: "ot-pause-detector: detecting Node VM pauses.  Checking every " + checkMs + "ms for pauses of at least " + maxPauseMs + "ms"});
 };
 
 // Stop detection
 PauseDetector.stop = function() {
-  logger.info("Stop detecting Node VM pauses");
+  logger.info({message: "Stop detecting Node VM pauses"});
   clearInterval(timer);
 };
 
@@ -44,20 +44,19 @@ PauseDetector.onPause = function(callback) {
   callbacks.push(callback);
 };
 
-// By default, log an error on pause
+// By default, log an warn when the maxPauseMS is hit.
 PauseDetector.onPause(function(ms) {
-  logger.error("The Node runtime paused for " + ms + "ms! (+/- " + checkMs + ")", {pauselengthMs: ms});
+  logger.warn({
+    message: "The Node runtime paused for " + ms + "ms! (+/- " + checkMs + ")",
+    pauselengthMs: ms
+  });
 });
 
 // Configure and start
 PauseDetector.init = function(options) {
   if (!options) {options = {};}
 
-  if (options.logger) {
-    logger = options.logger;
-  } else {
-    logger = require('ot-logger');
-  }
+  logger = options.logger;
 
   if (options.checkMs) {
     checkMs = options.checkMs;
