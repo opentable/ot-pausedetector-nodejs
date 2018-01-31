@@ -46,9 +46,10 @@ PauseDetector.onPause = function(callback) {
 
 // By default, log an warn when the maxPauseMS is hit.
 PauseDetector.onPause(function(ms) {
-  logger.warn({
+  logger.info({
+    '@loglov3-otl': 'nodejs-pause-time-v1',
     message: "The Node runtime paused for " + ms + "ms! (+/- " + checkMs + ")",
-    pauselengthMs: ms
+    'pause-duration': ms * 1000 /* microseconds */
   });
 });
 
